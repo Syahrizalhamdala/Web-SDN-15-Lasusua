@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import BadgeKategori from '../components/ui/BadgeKategori'
 import PageHeader from '../components/ui/PageHeader'
+import { api } from '../api'
 
 export default function DetailBerita() {
   const { slug } = useParams()
@@ -13,8 +14,8 @@ export default function DetailBerita() {
     async function fetchData() {
       try {
         const [detailRes, allRes] = await Promise.all([
-          fetch(`/api/public/posts/${slug}`),
-          fetch('/api/public/posts'),
+          fetch(api(`/api/public/posts/${slug}`)),
+          fetch(api('/api/public/posts')),
         ])
         const detail = await detailRes.json()
         const all = await allRes.json()

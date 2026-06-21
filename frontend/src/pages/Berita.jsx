@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { FaSearch, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import KartuBerita from '../components/ui/KartuBerita'
 import PageHeader from '../components/ui/PageHeader'
+import { api } from '../api'
 
 const kategoriFilter = ['Semua', 'Berita', 'Informasi', 'Pengumuman']
 const ITEMS_PER_PAGE = 6
@@ -28,7 +29,7 @@ export default function Berita() {
 
   useEffect(() => {
     document.title = 'Berita | SD Negeri 15 Lasusua'
-    fetch('/api/public/posts')
+    fetch(api('/api/public/posts'))
       .then((res) => res.json())
       .then((json) => {
         setData(json.data ?? json ?? [])

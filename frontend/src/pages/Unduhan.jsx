@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { FaDownload, FaSearch } from 'react-icons/fa'
 import PageHeader from '../components/ui/PageHeader'
+import { api } from '../api'
 
 export default function Unduhan() {
   const [data, setData] = useState([])
@@ -11,7 +12,7 @@ export default function Unduhan() {
 
   useEffect(() => {
     document.title = 'Unduhan | SD Negeri 15 Lasusua'
-    fetch('/api/public/downloads')
+    fetch(api('/api/public/downloads'))
       .then((res) => {
         if (!res.ok) throw new Error('Gagal memuat data')
         return res.json()
@@ -66,6 +67,7 @@ export default function Unduhan() {
           <div className="flex flex-wrap gap-2">
             {kategoriList.map((item) => (
               <button
+                type="button"
                 key={item}
                 onClick={() => setKategori(item)}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${

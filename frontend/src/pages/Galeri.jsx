@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import AOS from 'aos'
 import PageHeader from '../components/ui/PageHeader'
+import { api } from '../api'
 
 const videoList = [
   { id: 1, judul: 'Video Profil SD Negeri 15 Lasusua', embed: 'https://www.youtube.com/embed/DrjBA7CSyck' },
@@ -64,7 +65,7 @@ export default function Galeri() {
 
   useEffect(() => {
     document.title = 'Galeri | SD Negeri 15 Lasusua'
-    fetch('/api/public/photos')
+    fetch(api('/api/public/photos'))
       .then((res) => res.json())
       .then((json) => {
         setFotoList(json ?? [])

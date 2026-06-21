@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import KartuGuru from '../components/ui/KartuGuru'
 import PageHeader from '../components/ui/PageHeader'
+import { api } from '../api'
 
 const filterJabatan = ['Semua', 'Kepala Sekolah', 'Guru', 'Admin Sekolah', 'Operator Sekolah']
 
@@ -11,7 +12,7 @@ export default function GuruTendik() {
 
   useEffect(() => {
     document.title = 'Guru & Tenaga Kependidikan | SD Negeri 15 Lasusua'
-    fetch('/api/public/guru')
+    fetch(api('/api/public/guru'))
       .then((res) => res.json())
       .then((json) => {
         setGuru(json ?? [])
