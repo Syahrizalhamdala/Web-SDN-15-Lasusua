@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { FaDownload, FaSearch } from 'react-icons/fa'
 import PageHeader from '../components/ui/PageHeader'
 import { api } from '../api'
+import downloadsData from '../data/downloads.json'
 
 export default function Unduhan() {
   const [data, setData] = useState([])
@@ -23,7 +24,7 @@ export default function Unduhan() {
       })
       .catch((err) => {
         console.error('Unduhan fetch error:', err)
-        setNetworkError(true)
+        setData(downloadsData ?? [])
         setLoading(false)
       })
   }, [])

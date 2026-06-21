@@ -3,6 +3,7 @@ import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import AOS from 'aos'
 import PageHeader from '../components/ui/PageHeader'
 import { api } from '../api'
+import photosData from '../data/photos.json'
 
 const videoList = [
   { id: 1, judul: 'Video Profil SD Negeri 15 Lasusua', embed: 'https://www.youtube.com/embed/DrjBA7CSyck' },
@@ -71,7 +72,10 @@ export default function Galeri() {
         setFotoList(json ?? [])
         setLoading(false)
       })
-      .catch(() => setLoading(false))
+      .catch(() => {
+        setFotoList(photosData ?? [])
+        setLoading(false)
+      })
   }, [])
 
   useEffect(() => {

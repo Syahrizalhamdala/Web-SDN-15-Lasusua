@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import BadgeKategori from '../components/ui/BadgeKategori'
 import PageHeader from '../components/ui/PageHeader'
 import { api } from '../api'
+import postsData from '../data/posts.json'
 
 export default function DetailBerita() {
   const { slug } = useParams()
@@ -28,7 +29,11 @@ export default function DetailBerita() {
             .slice(0, 3)
         )
       } catch (_) {
-        /* ignore */
+        const list = postsData.data ?? postsData ?? []
+        setArtikel(list.find((p) => p.slug === slug) ?? null)
+        setBeritaTerkait(
+          list.filter((item) => item.slug !== slug).slice(0, 3)
+        )
       }
       setLoading(false)
     }

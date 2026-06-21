@@ -3,8 +3,9 @@ import { FaSearch, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import KartuBerita from '../components/ui/KartuBerita'
 import PageHeader from '../components/ui/PageHeader'
 import { api } from '../api'
+import postsData from '../data/posts.json'
 
-const kategoriFilter = ['Semua', 'Berita', 'Informasi', 'Pengumuman']
+const kategoriFilter = ['Semua', 'Akademik']
 const ITEMS_PER_PAGE = 6
 
 function SkeletonCard() {
@@ -35,7 +36,10 @@ export default function Berita() {
         setData(json.data ?? json ?? [])
         setLoading(false)
       })
-      .catch(() => setLoading(false))
+      .catch(() => {
+        setData(postsData.data ?? postsData ?? [])
+        setLoading(false)
+      })
   }, [])
 
   const filtered = useMemo(() => {

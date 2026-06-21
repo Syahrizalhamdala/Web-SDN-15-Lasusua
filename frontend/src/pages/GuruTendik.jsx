@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import KartuGuru from '../components/ui/KartuGuru'
 import PageHeader from '../components/ui/PageHeader'
 import { api } from '../api'
+import guruData from '../data/guru.json'
 
 const filterJabatan = ['Semua', 'Kepala Sekolah', 'Guru', 'Admin Sekolah', 'Operator Sekolah']
 
@@ -18,7 +19,10 @@ export default function GuruTendik() {
         setGuru(json ?? [])
         setLoading(false)
       })
-      .catch(() => setLoading(false))
+      .catch(() => {
+        setGuru(guruData ?? [])
+        setLoading(false)
+      })
   }, [])
 
   const filteredGuru = useMemo(() => {
