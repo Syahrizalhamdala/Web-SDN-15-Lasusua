@@ -41,7 +41,7 @@ export default function StatistikCounter() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           <StatItem icon={FaUserGraduate} target={125} label="Siswa Aktif" suffix="+" />
           <StatItem icon={FaChalkboardTeacher} target={11} label="Guru & Tendik" suffix="" />
-          <StatItem icon={FaUsers} target={500} label="Alumni" suffix="+" />
+          <StatItem icon={FaUsers} target={139} label="Alumni" suffix="+" />
           <StatItem icon={FaMedal} target={1} label="Akreditasi" suffix="+ (B)" />
         </div>
       </div>
